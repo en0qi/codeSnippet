@@ -1,4 +1,4 @@
-import csv
+﻿import csv
 import datetime
 import os
 def main():
@@ -15,17 +15,15 @@ def main():
 	z = float(pitch_width)
 	voxel_size = x*y*z
 	voxel_number = float(vol_cube) / float(voxel_size)
-	print("試料情報:"+samplename+"\n解析日:"+today+"\n解析者:"+opename+"\n----------------\n\nCT視野サイズ:"+CTsize+"[mm]")
-	print("\nマトリクスサイズ:{0}•{0}\nピッチ幅•スライス幅:{1}[mm]\nvolume of cube:{2}[mm^3]".format(MATsize,pitch_width,vol_cube))
 	print("\n----------------\nx:{0}[mm]\ny:{0}[mm]\nz:{1}[mm]".format(x,z))
 	histmin=input("histmin:")
 	histmax=input("histmax:")
-	# print("DataRange:{} ~ {}".format(histmin,histmax))
-	array2d = [("試料情報",samplename),("解析日",today),("解析者",opename),("CT視野サイズ[mm]",CTsize),("マトリクスサイズ",MATsize),("ピッチ幅•スライス幅[mm]",pitch_width),("Volume of Cube[mm^3]",vol_cube),("x[mm]",x),("y[mm]",y),("z[mm]",z),("histmin",histmin),('histmax',histmax)]
-	os.system("touch ./VR_{}_{}.csv".format(today,samplename))
-	f = open('./VR_{}_{}.csv'.format(today,samplename),'w')
-	writer = csv.writer(f, lineterminator='\n')
-	writer.writerows(array2d)
+	
+	#array2d = [("試料情報",samplename),("解析日",today),("解析者",opename),("CT視野サイズ[mm]",CTsize),("マトリクスサイズ",MATsize),("ピッチ幅•スライス幅[mm]",pitch_width),("Volume of Cube[mm^3]",vol_cube),("x[mm]",x),("y[mm]",y),("z[mm]",z),("histmin",histmin),('histmax',histmax)]
+	os.system("touch ./VR_{}_{}.txt".format(today,samplename))
+	f = open('./VR_{}_{}.txt'.format(today,samplename),'w')
+	f.write("試料情報:"+samplename+"\n解析日:"+today+"\n解析者:"+opename+"\n----------------\nCT視野サイズ:"+CTsize+"[mm]\nマトリクスサイズ:{0}*{0}\nピッチ幅,スライス幅:{1}[mm]\nvolume of cube:{2}[mm^3]\n----------------\nx:{3}[mm]\ny:{3}[mm]\nz:{4}[mm]\nDataRange:{5} ~ {6}".format(MATsize,pitch_width,vol_cube,x,z,histmin,histmax))
+
 	f.close()
 
 if __name__ == '__main__':
