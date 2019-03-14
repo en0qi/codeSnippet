@@ -6,6 +6,10 @@
 Excecute by entering the command below.
 `python3 threholding.py ***[.jpg,.png]`
 
+### 出力例
+
+![出力例](https://github.com/en0qi/codeSnippet/blob/master/figure_morning.jpg.png)
+
 ## gentask.py
 たまに難しい問題を含む足し算掛け算の問題とその答えをCSV出力する
 
